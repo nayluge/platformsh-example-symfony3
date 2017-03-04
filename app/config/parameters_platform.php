@@ -18,6 +18,6 @@ foreach ($relationships['database'] as $endpoint) {
     $container->setParameter('database_user', $endpoint['username']);
     $container->setParameter('database_password', $endpoint['password']);
     $container->setParameter('database_path', '');
-    $container->setParameter('mailer_transport', 'mail');
+    $container->setParameter('mailer_transport', 'sendmail');
 }
 
