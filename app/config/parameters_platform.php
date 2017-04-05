@@ -21,3 +21,7 @@ foreach ($relationships['database'] as $endpoint) {
     $container->setParameter('mailer_transport', 'sendmail');
 }
 
+// Set a default unique secret, based on a project-specific entropy value.
+if (isset($_ENV['PLATFORM_PROJECT_ENTROPY'])) {
+  $container->setParameter('kernel.secret', $_ENV['PLATFORM_PROJECT_ENTROPY']);
+}
