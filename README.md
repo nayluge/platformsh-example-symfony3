@@ -17,7 +17,7 @@ borrow whatever code is needed.  The most important parts are the [`.platform.ap
 
 Also see:
 
-* [`config.yml`](/app/config/config.yaml) - At the top of this file in the `imports` section, a new resource is added named `parameters_platform.php`.  That will load a PHP file rather than YAML file to specify Symfony configuration parameters.  Also note toward the bottom that the Doctrine DBAL server version is specified explicitly.  That is required to work around an issue where Doctrine will try to connect to the database during the build process to determine the server version, even though it doesn't need it.
-* [`parameters_platform.php`](/app/config/parameters_platform.php) - This file contains Platfom.sh-specific code to map environment variables into Symfony parameters.  This file will be parsed on every page load.  By default it only maps a default database connection to Container parameters expected by Doctrine.  You can add to it as needed.
+* [`config.yml`](/app/config/config.yml) - At the top of this file in the `imports` section, a new resource is added named `parameters_platform.php`.  That will load a PHP file rather than YAML file to specify Symfony configuration parameters.  Also note toward the bottom that the Doctrine DBAL server version is specified explicitly.  That is required to work around an issue where Doctrine will try to connect to the database during the build process to determine the server version, even though it doesn't need it.
+* [`parameters_platform.php`](/app/config/parameters_platform.php) - This file contains Platform.sh-specific code to map environment variables into Symfony parameters.  This file will be parsed on every page load.  By default it only maps a default database connection to Container parameters expected by Doctrine.  You can add to it as needed.
 
 That's all you need to make a Symfony 3 application run on Platform.sh!
