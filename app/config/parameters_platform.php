@@ -27,3 +27,16 @@ if (isset($_ENV['PLATFORM_RELATIONSHIPS'])) {
 if (isset($_ENV['PLATFORM_PROJECT_ENTROPY'])) {
     $container->setParameter('kernel.secret', $_ENV['PLATFORM_PROJECT_ENTROPY']);
 }
+
+if (getenv('PLATFORM_RELATIONSHIPS')) {
+    $relationships = json_decode(base64_decode($relationships), TRUE);
+
+    // For a relationship named 'applicationcache' referring to one endpoint.
+    if (!empty($relationships['applicationcache'])) {
+        foreach ($relationships['applicationcache'] as $endpoint) {
+            $container->setParameter('redis.dsn.session', 'redis://'.$endpoint['host'].':'.$endpoint['port'].'/0');
+            $container->setParameter('redis.dsn.cache', 'redis://'.$endpoint['host'].':'.$endpoint['port'].'/1');
+            break;
+        }
+    }
+}
